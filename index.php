@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 require 'dbcon.php';
 
 ?>
@@ -17,7 +17,7 @@ require 'dbcon.php';
 <body>
 
     <div class="container mt-5">
-        <!-- <?php include('message.php'); ?> -->
+        <?php include('message.php'); ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -45,7 +45,7 @@ require 'dbcon.php';
 
                                 if (mysqli_num_rows($query_run) > 0) {
                                     foreach ($query_run as $student) {
-                                        ?>
+                                ?>
 
                                         <tr>
                                             <td><?php echo $student['id']; ?></td>
@@ -56,16 +56,19 @@ require 'dbcon.php';
                                             <td>
                                                 <a href="student-view.php?id=<?php echo $student['id']; ?>" class="btn btn-info btn-sm">View</a>
                                                 <a href="student-edit.php?id=<?php echo $student['id']; ?>" class="btn btn-success btn-sm">Edit</a>
-                                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+
+                                                <form action="code.php" method="POST" class="d-inline">
+                                                    <button type="submit" name="delete_student" value="<?php echo $student['id']; ?>" class="btn btn-danger btn-sm">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
-                                        <?php
+                                <?php
                                     }
                                 } else {
                                     echo "<h5>No record found</h5>";
                                 }
                                 ?>
-                              
+
                             </tbody>
                         </table>
                     </div>
