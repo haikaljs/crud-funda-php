@@ -9,7 +9,7 @@ require('dbcon.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Student edit</title>
+    <title>Student view</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
@@ -23,7 +23,7 @@ require('dbcon.php');
                 <?php include('message.php'); ?>
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit Student
+                        <h4>View Student
                             <a href="index.php" class="btn btn-dark float-end">Back</a>
                         </h4>
                     </div>
@@ -37,30 +37,35 @@ require('dbcon.php');
                             if (mysqli_num_rows($query_run) > 0) {
                                 $student = mysqli_fetch_assoc($query_run);
                         ?>
-                                <form action="code.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $student_id; ?>">
+                                
+                                   
                                     <div class="mb-3">
                                         <label for="">Student Name</label>
-                                        <input type="text" name="name" value="<?php echo $student['name'] ?>" class="form-control">
+                                        <p class="form-control">
+                                        <?php echo $student['name']; ?>
+                                        </p>
                                     </div>
                                     <div class="mb-3">
                                         <label for="">Student Email</label>
-                                        <input type="email" name="email" value="<?php echo $student['email'] ?>" class="form-control">
+                                        <p class="form-control">
+                                        <?php echo $student['email']; ?>
+                                        </p>
                                     </div>
                                     <div class="mb-3">
                                         <label for="">Student Phone</label>
-                                        <input type="number" name="phone" value="<?php echo $student['phone']?>" class="form-control">
+                                        <p class="form-control">
+                                        <?php echo $student['phone']; ?>
+                                        </p>
                                     </div>
                                     <div class="mb-3">
                                         <label for="">Student Course</label>
-                                        <input type="text" name="course" value="<?php echo $student['course']?>" class="form-control">
+                                        <p class="form-control">
+                                        <?php echo $student['course']; ?>
+                                        </p>
                                     </div>
-                                    <div class="mb-3">
-                                        <button type="submit" name="update_student" class="btn btn-primary">Update Student</button>
+                                   
 
-                                    </div>
-
-                                </form>
+                               
 
                         <?php
                             } else {
